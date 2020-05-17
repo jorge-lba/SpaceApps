@@ -10,6 +10,9 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.14"
   },
+  "scripts": {
+    "test": "nodemon _dist/src/server.js"
+  },
   "devDependencies": {
     "@types/cors": "^2.8.6",
     "@types/dotenv": "^8.2.0",

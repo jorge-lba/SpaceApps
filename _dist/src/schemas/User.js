@@ -1,14 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose_1 = require("mongoose");
-var UserSchema = new mongoose_1.Schema({
-    email: String,
-    fristName: String,
-    lastName: String
+const mongoose_1 = require("mongoose");
+const UserSchema = new mongoose_1.Schema({
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    discordName: {
+        type: String
+    },
+    discordUserId: {
+        type: Number,
+        unique: true
+    },
+    cellPhone: {
+        type: String
+    }
 }, {
     timestamps: true
 });
-UserSchema.methods.fullName = function () {
-    return this.fristName + " " + this.lastName;
-};
 exports.default = mongoose_1.model('User', UserSchema);

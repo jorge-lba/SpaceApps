@@ -1,8 +1,11 @@
+import * as dotenv from 'dotenv'
 import mongoose from 'mongoose'
-import env from '../../env'
+
+dotenv.config()
+const url:string = String(process.env.URL_DATABASE)
 
 function database (): void {
-  mongoose.connect(env.URL_DATABASE, {
+  mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

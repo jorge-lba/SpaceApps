@@ -1,9 +1,10 @@
+import * as dotenv from 'dotenv'
 import express from 'express' 
 import cors from 'cors'
-require('dotenv/config')
 
 import DataBase from './database/connection'
 import Routes from './routes'
+dotenv.config()
 
 class App {
     public express: express.Application

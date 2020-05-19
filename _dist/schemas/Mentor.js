@@ -5,7 +5,7 @@ const MentorSchema = new mongoose_1.Schema({
     email: { type: String, required: true, unique: true },
     name: { type: String, brequired: true },
     discordName: { type: String },
-    discordUserId: { type: Number, unique: true },
+    discordUserId: { type: Number },
     cellPhone: { type: String },
     areas: [{ type: String }],
     mentoringSchedule: [{

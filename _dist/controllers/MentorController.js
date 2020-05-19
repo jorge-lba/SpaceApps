@@ -65,7 +65,7 @@ class MentorController {
             try {
                 const mentorId = request.params.id;
                 const data = request.body;
-                const validKeys = ['email', 'name', 'discordName', 'discordUserId', 'cellPhone', 'areas', 'mentoringSchedule', 'markedMentoring'];
+                const validKeys = ['email', 'name', 'discordName', 'discordUserId', 'cellPhone', 'areas', 'mentoringSchedule', 'markedMentoringID'];
                 const mentor = yield Mentor_1.default.findById(mentorId);
                 const mentorNew = mentor === null || mentor === void 0 ? void 0 : mentor.toObject();
                 validKeys.forEach(item => {

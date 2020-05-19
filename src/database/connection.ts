@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import env from '../../env'
+import * as env from '../../env'
 
 function database (): void {
   mongoose.connect(env.URL_DATABASE, {

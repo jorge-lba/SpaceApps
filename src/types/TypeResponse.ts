@@ -9,6 +9,7 @@ type TypeResponse = {
     }
     userList?:[]
     error?: string
+    teamList?:[]
 }
 
 

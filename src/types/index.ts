@@ -7,8 +7,14 @@ type TypeResponse = {
         discordName?: string
         discordUserId?: number
     }
+    team?:{
+        name:string
+        members:string[],
+        scheduledMentoring?:string[]
+    }
     userList?:{}[]
     error?: string
+    teamList?:{}[]
 }
 
 

@@ -27,6 +27,9 @@ const UserSchema = new Schema({
   },
   cellPhone:{
     type: String
+  },
+  team:{
+    type: String
   }
 }, {
   timestamps: true

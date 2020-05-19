@@ -13,8 +13,8 @@ type TypeResponse = {
 
 
 type UserDefault = {
-    name?:string
-    email?:string
+    name:string
+    email:string
     cellPhone?:string
     discordName?: string
     discordUserId?: number

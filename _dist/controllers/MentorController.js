@@ -12,17 +12,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const User_1 = __importDefault(require("../schemas/User"));
-class UserController {
+const Mentor_1 = __importDefault(require("../schemas/Mentor"));
+class MentorController {
     index(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             let contentResponse;
             try {
-                const users = yield User_1.default.find();
-                const totalUsers = users.length;
+                const mentors = yield Mentor_1.default.find();
+                const totalMentors = mentors.length;
                 contentResponse = {
-                    message: `Total de usuários: ${totalUsers}`,
-                    userList: users
+                    message: `Total de usuários: ${totalMentors}`,
+                    userList: mentors
                 };
                 return response.status(200).json(contentResponse);
             }
@@ -40,12 +40,12 @@ class UserController {
             let contentResponse;
             try {
                 const { name, email, cellPhone } = request.body;
-                const user = yield User_1.default.create({ name, email, cellPhone });
+                const mentor = yield Mentor_1.default.create({ name, email, cellPhone });
                 contentResponse = {
                     message: 'Usuário cadastrado com sucesso.',
                     user: {
-                        name: user.name,
-                        email: user.email
+                        name: mentor.name,
+                        email: mentor.email
                     }
                 };
                 return response.status(200).json(contentResponse);
@@ -63,21 +63,21 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             let contentResponse;
             try {
-                const userId = request.params.id;
+                const mentorId = request.params.id;
                 const data = request.body;
-                const validKeys = ['email', 'name', 'discordName', 'discordUserId', 'cellPhone'];
-                const user = yield User_1.default.findById(userId);
-                const userNew = user === null || user === void 0 ? void 0 : user.toObject();
+                const validKeys = ['email', 'name', 'discordName', 'discordUserId', 'cellPhone', 'areas', 'mentoringSchedule', 'markedMentoring'];
+                const mentor = yield Mentor_1.default.findById(mentorId);
+                const mentorNew = mentor === null || mentor === void 0 ? void 0 : mentor.toObject();
                 validKeys.forEach(item => {
                     if (data[item])
-                        userNew[item] = data[item];
+                        mentorNew[item] = data[item];
                 });
-                yield User_1.default.updateOne({ _id: userId }, userNew);
+                yield Mentor_1.default.updateOne({ _id: mentorId }, mentorNew);
                 contentResponse = {
                     message: 'Usuário atualizado com sucesso.',
                     user: {
-                        name: userNew.name,
-                        email: userNew.email,
+                        name: mentorNew.name,
+                        email: mentorNew.email,
                     }
                 };
                 return response.status(200).json(contentResponse);
@@ -95,14 +95,14 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             let contentResponse;
             try {
-                const userId = request.params.id;
-                const user = yield User_1.default.findByIdAndDelete(userId);
-                const userDeleted = user === null || user === void 0 ? void 0 : user.toObject();
+                const mentorId = request.params.id;
+                const mentor = yield Mentor_1.default.findByIdAndDelete(mentorId);
+                const mentorDeleted = mentor === null || mentor === void 0 ? void 0 : mentor.toObject();
                 contentResponse = {
                     message: 'Usuário cadastrado com sucesso.',
                     user: {
-                        name: userDeleted.name,
-                        email: userDeleted.email
+                        name: mentorDeleted.name,
+                        email: mentorDeleted.email
                     }
                 };
                 return response.status(200).json(contentResponse);
@@ -117,4 +117,4 @@ class UserController {
         });
     }
 }
-exports.default = new UserController();
+exports.default = new MentorController();

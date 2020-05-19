@@ -20,6 +20,9 @@ const UserSchema = new mongoose_1.Schema({
     },
     cellPhone: {
         type: String
+    },
+    team: {
+        type: String
     }
 }, {
     timestamps: true

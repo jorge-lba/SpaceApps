@@ -3,6 +3,7 @@ import { Router } from 'express'
 import UserController from './controllers/UserController'
 import MentorController from './controllers/MentorController'
 import TeamController from './controllers/TeamController'
+import MentoringController from './controllers/MentoringController'
 
 const routes = Router()
 
@@ -19,5 +20,9 @@ routes.delete('/mentors/:id', MentorController.delete)
 routes.get('/teams', TeamController.index)
 routes.post('/teams', TeamController.store)
 routes.put('/teams/:id', TeamController.update)
+
+routes.get('/mentorings', MentoringController.index)
+routes.post('/mentorings', MentoringController.store)
+routes.put('/mentorings/:id', MentoringController.update)
 
 export default routes

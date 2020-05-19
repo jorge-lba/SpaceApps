@@ -12,9 +12,18 @@ type TypeResponse = {
         members:string[],
         scheduledMentoring?:string[]
     }
+    mentoring?:{
+        mentor:string
+        team:string
+        date:Date
+        area:string
+        state?:string
+        feedbackMentor?:string
+    }
     userList?:{}[]
     error?: string
     teamList?:{}[]
+    mentoringList?:{}[]
 }
 
 

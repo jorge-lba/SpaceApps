@@ -14,7 +14,8 @@ const MentoringSchema = new Schema({
     team:{type:String, required:true},
     date:{type:Date, required:true},
     area:{type:String, required:true},
+    state:{type:String},
     feedbackMentor:{type:String}
-})
+},{timestamps:true})
 
 export default model <MentoringInterface>('Mentoring', MentoringSchema)

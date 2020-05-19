@@ -11,7 +11,7 @@
     "mongoose": "^5.9.14"
   },
   "scripts": {
-    "test": "nodemon _dist/src/server.js"
+    "test": "nodemon _dist/server.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",

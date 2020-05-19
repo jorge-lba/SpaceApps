@@ -26,6 +26,7 @@ const dotenv = __importStar(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 dotenv.config();
 const url = String(process.env.URL_DATABASE);
+console.log(url);
 function database() {
     mongoose_1.default.connect(url, {
         useNewUrlParser: true,

@@ -1,22 +1,38 @@
 import { Schema, model, Document } from 'mongoose'
 
-interface UserInterface extends Document{
-  email?: string
-  fristName?: string
-  lastName?: string
-  fullName(): string
+export interface UserInterface extends Document{
+  email: string
+  name: string
+  discordName?: string
+  discordUserId?: number
+  cellPhone?: string
 }
 
 const UserSchema = new Schema({
-  email: String,
-  fristName: String,
-  lastName: String
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  name:{
+    type: String,
+    required: true,
+  },
+  discordName: {
+    type: String
+  },
+  discordUserId: {
+    type: Number,
+    unique: true
+  },
+  cellPhone:{
+    type: String
+  },
+  team:{
+    type: String
+  }
 }, {
   timestamps: true
 })
-
-UserSchema.methods.fullName = function (): string {
-  return `${this.fristName} ${this.lastName}`
-}
 
 export default model <UserInterface>('User', UserSchema)

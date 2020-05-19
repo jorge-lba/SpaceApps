@@ -1,19 +1,19 @@
 import { Request, Response } from 'express'
 
-import User from '../schemas/User'
+import Mentor from '../schemas/Mentor'
 import type {TypeResponse} from '../types/index'
 
-class UserController {
+class MentorController {
 
   public async index (request: Request, response: Response): Promise<Response> {
     let contentResponse: TypeResponse
     try {
-      const users = await User.find()
-      const totalUsers = users.length
+      const mentors = await Mentor.find()
+      const totalMentors = mentors.length
       
       contentResponse = {
-        message: `Total de usuários: ${totalUsers}`,
-        userList: users
+        message: `Total de usuários: ${totalMentors}`,
+        userList: mentors
       }
 
       return response.status(200).json(contentResponse)
@@ -34,13 +34,13 @@ class UserController {
       const {name, email, cellPhone}:
       { name:string, email:string, cellPhone:string|undefined } = request.body
 
-      const user = await User.create({ name, email, cellPhone })
+      const mentor = await Mentor.create({ name, email, cellPhone })
 
       contentResponse = {
         message: 'Usuário cadastrado com sucesso.',
         user:{
-          name: user.name,
-          email: user.email
+          name: mentor.name,
+          email: mentor.email
         }
       }
 
@@ -62,23 +62,23 @@ class UserController {
    
     try {
       
-      const userId = request.params.id
+      const mentorId = request.params.id
       const data = request.body
-      const validKeys = ['email', 'name', 'discordName', 'discordUserId', 'cellPhone', 'team']
+      const validKeys = ['email', 'name', 'discordName', 'discordUserId', 'cellPhone', 'areas', 'mentoringSchedule', 'markedMentoring']
       
-      const user = await User.findById(userId)
-      const userNew = user?.toObject()
+      const mentor = await Mentor.findById(mentorId)
+      const mentorNew = mentor?.toObject()
       validKeys.forEach(item => {
-        if(data[item])userNew[item] = data[item]
+        if(data[item])mentorNew[item] = data[item]
       })
       
-      await User.updateOne({_id: userId}, userNew)
+      await Mentor.updateOne({_id: mentorId}, mentorNew)
      
       contentResponse = {
         message: 'Usuário atualizado com sucesso.',
         user:{
-          name: userNew.name,
-          email: userNew.email,
+          name: mentorNew.name,
+          email: mentorNew.email,
         }
       }
 
@@ -98,16 +98,16 @@ class UserController {
     let contentResponse: TypeResponse
     
     try {
-      const userId = request.params.id
-      const user = await User.findByIdAndDelete(userId)
+      const mentorId = request.params.id
+      const mentor = await Mentor.findByIdAndDelete(mentorId)
 
-      const userDeleted = user?.toObject()
+      const mentorDeleted = mentor?.toObject()
 
       contentResponse = {
         message: 'Usuário cadastrado com sucesso.',
         user:{
-          name: userDeleted.name,
-          email: userDeleted.email
+          name: mentorDeleted.name,
+          email: mentorDeleted.email
         }
       }
 
@@ -124,4 +124,4 @@ class UserController {
 
 }
 
-export default new UserController()
+export default new MentorController()

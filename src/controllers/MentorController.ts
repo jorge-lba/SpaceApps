@@ -64,7 +64,7 @@ class MentorController {
       
       const mentorId = request.params.id
       const data = request.body
-      const validKeys = ['email', 'name', 'discordName', 'discordUserId', 'cellPhone', 'areas', 'mentoringSchedule', 'markedMentoring']
+      const validKeys = ['email', 'name', 'discordName', 'discordUserId', 'cellPhone', 'areas', 'mentoringSchedule', 'markedMentoringID']
       
       const mentor = await Mentor.findById(mentorId)
       const mentorNew = mentor?.toObject()

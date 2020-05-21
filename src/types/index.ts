@@ -11,7 +11,7 @@ type TypeResponse = {
         name:string
         members:string[],
         scheduledMentoring?:string[]
-    }
+    }|null
     mentoring?:{
         mentor:string
         team:string

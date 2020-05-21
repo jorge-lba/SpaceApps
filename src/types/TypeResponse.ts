@@ -9,7 +9,8 @@ type TypeResponse = {
     }
     userList?:[]
     error?: string
-    teamList?:[]
+    teamList?:[],
+    team?:any
 }
 
 

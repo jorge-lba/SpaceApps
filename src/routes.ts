@@ -17,7 +17,8 @@ routes.post('/mentors', MentorController.store)
 routes.put('/mentors/:id', MentorController.update)
 routes.delete('/mentors/:id', MentorController.delete)
 
-routes.get('/teams', TeamController.index)
+routes.get('/teams/:id', TeamController.index)
+routes.get('/teams', TeamController.list)
 routes.post('/teams', TeamController.store)
 routes.put('/teams/:id', TeamController.update)
 

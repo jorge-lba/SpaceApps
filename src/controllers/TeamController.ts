@@ -1,10 +1,10 @@
 import { Request, Response } from 'express'
 
-import Team from '../schemas/Team'
+import Team, {TeamInterface} from '../schemas/Team'
 import type {TypeResponse} from '../types/index'
 
 class TeamController {
-  public async index (request:Request, response:Response): Promise<Response>{
+  public async list (request:Request, response:Response): Promise<Response>{
     let contentResponse:TypeResponse
     try {
         
@@ -14,6 +14,28 @@ class TeamController {
       contentResponse = {
           message: `Total de times cadastrados: ${totalTeams}`,
           teamList: teams
+      }
+
+      return response.status(200).json(contentResponse)
+
+    } catch (error) {
+        contentResponse = {
+          message: 'Ops! Ouve um erro ao listar os times, tente novamente.',
+          error
+        }
+        return response.status(400).json(contentResponse)
+    }
+  }
+
+  public async index (request:Request, response:Response): Promise<Response>{
+    let contentResponse:TypeResponse
+    try {
+      const id:string = request.params.id  
+      const team:TeamInterface | null = await Team.findById(id)
+
+      contentResponse = {
+          message: `Time ${team?.name}`,
+          team
       }
 
       return response.status(200).json(contentResponse)

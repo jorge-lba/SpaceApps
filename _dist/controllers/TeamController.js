@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Team_1 = __importDefault(require("../schemas/Team"));
 class TeamController {
-    index(request, response) {
+    list(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             let contentResponse;
             try {
@@ -23,6 +23,27 @@ class TeamController {
                 contentResponse = {
                     message: `Total de times cadastrados: ${totalTeams}`,
                     teamList: teams
+                };
+                return response.status(200).json(contentResponse);
+            }
+            catch (error) {
+                contentResponse = {
+                    message: 'Ops! Ouve um erro ao listar os times, tente novamente.',
+                    error
+                };
+                return response.status(400).json(contentResponse);
+            }
+        });
+    }
+    index(request, response) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let contentResponse;
+            try {
+                const id = request.params.id;
+                const team = yield Team_1.default.findById(id);
+                contentResponse = {
+                    message: `Time ${team === null || team === void 0 ? void 0 : team.name}`,
+                    team
                 };
                 return response.status(200).json(contentResponse);
             }

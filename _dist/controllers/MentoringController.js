@@ -35,6 +35,28 @@ class MentoringController {
             }
         });
     }
+    getById(request, response) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let contentResponse;
+            try {
+                const mentoringId = request.params.id;
+                const mentoring = yield Mentoring_1.default.findById(mentoringId);
+                const mentoringNew = mentoring === null || mentoring === void 0 ? void 0 : mentoring.toObject();
+                contentResponse = {
+                    message: 'Mentoria atualizada com sucesso.',
+                    mentoring: mentoringNew
+                };
+                return response.status(200).json(contentResponse);
+            }
+            catch (error) {
+                contentResponse = {
+                    message: 'Ops! Não foi possivel atualizar a mentoria, tente novamente.',
+                    error
+                };
+                return response.status(400).json(contentResponse);
+            }
+        });
+    }
     store(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             let contentResponse;

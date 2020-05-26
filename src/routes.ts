@@ -23,6 +23,7 @@ routes.post('/teams', TeamController.store)
 routes.put('/teams/:id', TeamController.update)
 
 routes.get('/mentorings', MentoringController.index)
+routes.get('/mentorings/:id', MentoringController.getById)
 routes.post('/mentorings', MentoringController.store)
 routes.put('/mentorings/:id', MentoringController.update)
 

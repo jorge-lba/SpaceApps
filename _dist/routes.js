@@ -22,6 +22,7 @@ routes.get('/teams', TeamController_1.default.list);
 routes.post('/teams', TeamController_1.default.store);
 routes.put('/teams/:id', TeamController_1.default.update);
 routes.get('/mentorings', MentoringController_1.default.index);
+routes.get('/mentorings/:id', MentoringController_1.default.getById);
 routes.post('/mentorings', MentoringController_1.default.store);
 routes.put('/mentorings/:id', MentoringController_1.default.update);
 exports.default = routes;

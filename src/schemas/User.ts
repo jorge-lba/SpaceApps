@@ -23,7 +23,7 @@ const UserSchema = new Schema({
   },
   discordUserId: {
     type: Number,
-    unique: true
+    // unique: true
   },
   cellPhone:{
     type: String

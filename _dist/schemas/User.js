@@ -16,7 +16,6 @@ const UserSchema = new mongoose_1.Schema({
     },
     discordUserId: {
         type: Number,
-        unique: true
     },
     cellPhone: {
         type: String

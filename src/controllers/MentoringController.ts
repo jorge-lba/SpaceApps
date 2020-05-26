@@ -28,6 +28,33 @@ class MentoringController {
         }
     }
 
+    public async getById(request:Request, response:Response):Promise<Response>{
+        let contentResponse:TypeResponse
+
+        try {
+            
+            const mentoringId = request.params.id
+
+            const mentoring = await Mentoring.findById(mentoringId)
+            const mentoringNew = mentoring?.toObject()
+
+            contentResponse = {
+                message:'Mentoria atualizada com sucesso.',
+                mentoring: mentoringNew
+            }
+
+            return response.status(200).json(contentResponse)
+
+        } catch (error) {
+           contentResponse = {
+               message: 'Ops! Não foi possivel atualizar a mentoria, tente novamente.',
+               error
+           } 
+
+           return response.status(400).json(contentResponse)
+        } 
+    }
+
     public async store (request:Request, response:Response):Promise<Response>{
         let contentResponse: TypeResponse
 

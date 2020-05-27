@@ -11,6 +11,7 @@
     "mongoose": "^5.9.14"
   },
   "scripts": {
+    "start": "node _dist/server.js",
     "test": "nodemon _dist/server.js"
   },
   "devDependencies": {

@@ -19,7 +19,7 @@ class App {
 
     private middlewares():void{
         this.express.use(express.json())
-        this.express.use(cors())
+        this.express.use(cors({origin: 'https://spaceapps-discord-bot.herokuapp.com/'}))
     }
 
     private database:() => void = DataBase

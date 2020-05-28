@@ -38,7 +38,7 @@ class App {
     }
     middlewares() {
         this.express.use(express_1.default.json());
-        this.express.use(cors_1.default());
+        this.express.use(cors_1.default({ origin: 'https://spaceapps-discord-bot.herokuapp.com/' }));
     }
     routes() {
         this.express.use(routes_1.default);
